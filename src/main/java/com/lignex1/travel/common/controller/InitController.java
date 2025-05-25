@@ -30,6 +30,7 @@ public class InitController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String IndexBase(HttpServletRequest request, Model model) throws Exception {
+		log.info("w2xPath={}", request.getParameter("w2xPath"));
 		model.addAttribute("movePage", loginService.getLoginPage(request.getParameter("w2xPath")));
 		return "websquare/websquare";
 	}
