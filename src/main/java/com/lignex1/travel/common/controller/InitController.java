@@ -43,6 +43,7 @@ public class InitController {
 	 */
 	@RequestMapping(value = "/popup", method = RequestMethod.GET)
 	public String IndexWebSquare(HttpServletRequest request, Model model) throws Exception {
+		log.info("/popup w2xPath={}", request.getParameter("w2xPath"));
 		model.addAttribute("movePage", loginService.getLoginPage(request.getParameter("w2xPath")));
 		return "websquare/popup";
 	}
