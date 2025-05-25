@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataList id="dlt_menu" baseNode="list" saveRemovedData="true" repeatNode="map"
+        			ev:ondataload="scwin.dlt_menu_ondataload">
+        			<w2:columnInfo>
+        				<w2:column id="MENU_CD" name="메뉴코드" dataType="text"></w2:column>
+        				<w2:column id="MENU_NM" name="메뉴명" dataType="text"></w2:column>
+        				<w2:column id="IS_USE" name="사용유무" dataType="text"></w2:column>
+        				<w2:column id="SRC_PATH" name="메뉴경로" dataType="text"></w2:column>
+        				<w2:column id="PARENT_MENU_CD" name="부모메뉴코드" dataType="text"></w2:column>
+        				<w2:column id="MENU_LEVEL" name="메뉴레벨" dataType="text"></w2:column>
+        				<w2:column id="SORT_ORDER" name="정렬순서" dataType="text"></w2:column>
+        				<w2:column id="PROGRAM_CD" name="프로그램코드" dataType="text"></w2:column>
+        			</w2:columnInfo>
+        		</w2:dataList>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission id="submission1" ref="" target="data:json,dlt_menu" action="/main/init" method="post"
+        		mediatype="application/json" encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous"
+        		processMsg="" ev:submit="" ev:submitdone="" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	var searchCodeGrpOption = {
+		id: "sbm_InitCont", action: "/main/init",
+		target: 'data:json, "dlt_menu"', method: "post",
+		mediatype: "application/json", mode: "asynchronous", isProcessMsg: false,
+		submitDoneHandler: scwin.initDataCallback
+	};
+
+	com.sbm.executeDynamic(searchCodeGrpOption);
+};
+
+scwin.initDataCallback = function () {
+	alert(dlt_menu.getAllData().length);
+}
+
+scwin.btn_search_onclick = function(e) {
+	com.sbm.execute(submission1);
+};
+
+// scwin.btn_search_onclick = function(e) {
+// 	var searchCodeGrpOption = {
+// 		id: "sbm_InitCont", action: "/main/init",
+// 		target: 'data:json, ["dlt_menu"]', method: "post",
+// 		mediatype: "application/json", mode: "asynchronous", isProcessMsg: false,
+// 		submitDoneHandler: scwin.initDataCallback
+// 	};
+
+// 	com.sbm.executeDynamic(searchCodeGrpOption);
+// };
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<w2:textbox id="" label="메뉴테스트" style="width: 150px;height: 23px;"></w2:textbox>
+    	<w2:treeview id="" dataType="listed" tooltipGroupClass="false" style="width: 200px;height: 200px;">
+    		<w2:itemset nodeset="data:dlt_menu">
+    			<w2:label ref="MENU_NM"></w2:label>
+    			<w2:value ref="MENU_CD"></w2:value>
+    			<w2:depth ref="MENU_LEVEL"></w2:depth>
+    			<w2:folder ref=""></w2:folder>
+    			<w2:checkbox ref=""></w2:checkbox>
+    			<w2:checkboxDisabled ref=""></w2:checkboxDisabled>
+    			<w2:image ref=""></w2:image>
+    			<w2:iconImage ref=""></w2:iconImage>
+    			<w2:selectedImage ref=""></w2:selectedImage>
+    			<w2:expandedImage ref=""></w2:expandedImage>
+    			<w2:leafImage ref=""></w2:leafImage>
+    		</w2:itemset>
+    	</w2:treeview>
+    	<xf:trigger type="button" id="btn_search" style="width: 80px;height: 23px;" ev:onclick="scwin.btn_search_onclick">
+    		<xf:label><![CDATA[조회]]></xf:label>
+    	</xf:trigger>
+    </body>
+</html>

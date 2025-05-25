@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lignex1.travel.item.dao.ItemDao">
+
+	<select id="findAll"  resultType="com.lignex1.travel.domain.item.Item" parameterType="Map">
+		SELECT id, item_name, price, quantity
+		FROM ITEM
+		<where>
+			<if test="itemName != null and itemName != ''">
+				AND item_name like '%' || #{itemName} || '%'
+			</if>
+			<if test="maxPrice != null">
+				AND price &lt;= #{maxPrice}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		<selectKey keyProperty="id" resultType="Integer" order="BEFORE">
+			SELECT ITEM_ID_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO ITEM (id, item_name, price, quantity)
+		VALUES (#{id}, #{itemName}, #{price}, #{quantity})
+	</insert>
+	
+</mapper>

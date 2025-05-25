@@ -1,0 +1,9 @@
+{
+   "charset": "UTF-8",
+   "reqMethod": "POST",
+   "serviceURL": "http://localhost:8084/items",
+   "contentType": "application/json",
+   "requestContent": "",
+   "responseContent": "{\"rsMsg\":{},\"items\":[{\"PRICE\":10000,\"QUANTITY\":10,\"ID\":8,\"ITEM_NAME\":\"itemA\"},{\"PRICE\":10000,\"QUANTITY\":10,\"ID\":5,\"ITEM_NAME\":\"itemA1\"},{\"PRICE\":11110,\"QUANTITY\":1,\"ID\":6,\"ITEM_NAME\":\"temA21\"},{\"PRICE\":10000,\"QUANTITY\":10,\"ID\":1,\"ITEM_NAME\":\"itemA\"},{\"PRICE\":20000,\"QUANTITY\":20,\"ID\":2,\"ITEM_NAME\":\"itemB\"}]}",
+   "sendTime": "2025-05-03 21:01:08"
+}

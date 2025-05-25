@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <w2:type>COMPONENT</w2:type>
+        <w2:buildDate/>
+        <w2:MSA/>
+        <xf:model>
+        	<w2:dataCollection baseNode="map">
+        		<w2:dataMap baseNode="map" id="dm_item_search_cond">
+        			<w2:keyInfo>
+        				<w2:key id="item_name" name="품명" dataType="text"></w2:key>
+        				<w2:key id="max_price" name="최고가격" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        			<w2:data>
+        				<item_name><![CDATA[ ]]></item_name>
+        			</w2:data>
+        		</w2:dataMap>
+        		<w2:dataMap id="rsMsg">
+        			<w2:keyInfo></w2:keyInfo>
+        			<w2:data xmlns=""></w2:data>
+        		</w2:dataMap>
+        		<w2:dataList id="items">
+        			<w2:columnInfo>
+        				<w2:column id="id" name="ID" dataType="text"></w2:column>
+        				<w2:column id="itemName" name="ITEMNAME" dataType="text"></w2:column>
+        				<w2:column id="price" name="PRICE" dataType="text"></w2:column>
+        				<w2:column id="quantity" name="QUANTITY" dataType="text"></w2:column>
+
+
+        			</w2:columnInfo>
+        			<w2:data xmlns="">
+        				<w2:row>
+        					<price><![CDATA[10000]]></price>
+        					<quantity><![CDATA[10]]></quantity>
+        					<id><![CDATA[8]]></id>
+        					<itemName><![CDATA[itemA]]></itemName>
+        				</w2:row>
+        				<w2:row>
+        					<price><![CDATA[10000]]></price>
+        					<quantity><![CDATA[10]]></quantity>
+        					<id><![CDATA[5]]></id>
+        					<itemName><![CDATA[itemA1]]></itemName>
+        				</w2:row>
+        				<w2:row>
+        					<price><![CDATA[11110]]></price>
+        					<quantity><![CDATA[1]]></quantity>
+        					<id><![CDATA[6]]></id>
+        					<itemName><![CDATA[temA21]]></itemName>
+        				</w2:row>
+        				<w2:row>
+        					<price><![CDATA[10000]]></price>
+        					<quantity><![CDATA[10]]></quantity>
+        					<id><![CDATA[1]]></id>
+        					<itemName><![CDATA[itemA]]></itemName>
+        				</w2:row>
+        				<w2:row>
+        					<price><![CDATA[20000]]></price>
+        					<quantity><![CDATA[20]]></quantity>
+        					<id><![CDATA[2]]></id>
+        					<itemName><![CDATA[itemB]]></itemName>
+        				</w2:row>
+        			</w2:data>
+        		</w2:dataList>
+        		<w2:dataMap baseNode="map" id="dma_optionsSetting">
+        			<w2:keyInfo>
+        				<w2:key id="fileName" name="name1" dataType="text"></w2:key>
+        			</w2:keyInfo>
+        			<w2:data use="true">
+        				<excelDownload.xlsx><![CDATA[ ]]></excelDownload.xlsx>
+        				<fileName><![CDATA[excelDownload]]></fileName>
+        			</w2:data>
+        		</w2:dataMap>
+        	</w2:dataCollection>
+        	<w2:workflowCollection />
+        	<xf:submission id="itemSearch" ref="data:json,dm_item_search_cond" target="data:json,items" action="/items" method="post" mediatype="application/json"
+        		encoding="UTF-8" instance="" replace="" errorHandler="" customHandler="" mode="asynchronous" processMsg="" ev:submit=""
+        		ev:submitdone="scwin.itemSearch_submitdone" ev:submiterror="" abortTrigger="">
+        	</xf:submission>
+        </xf:model>
+        <w2:layoutInfo/>
+        <w2:publicInfo method=""/>
+        <script lazy="false" type="text/javascript"><![CDATA[
+scwin.onpageload = function() {
+	
+};
+
+scwin.trg_itemSearch_onclick = function(e) {
+    com.sbm.execute(itemSearch);
+};
+
+scwin.itemSearch_submitdone = function(e) {
+};
+
+scwin.btn_downloadData_onclick = function(e) {
+    var option = dma_optionsSetting.getJSON();
+    var info = {};
+    com.data.downloadGridViewExcel(grd_items, option, info);
+};
+
+scwin.btn_uploadData_onclick = function(e) {
+    var options = {};
+    com.data.uploadGridViewExcel(grd_items, options);
+};
+
+scwin.btn_create_item_onclick = function(e) {
+    var option = {
+        id : "pop_create_item",
+        popupName : "상품등록",
+        width: 450,
+        height: 430,
+        modal: true,
+        type : "wframePopup",
+    }
+
+    var data = {};
+
+    com.win.openPopup("/ui/ITEM/CREATE_ITEM.xml", option, data);
+};
+]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload">
+    	<xf:group class="pgtbox" id="" style="">
+    		<xf:trigger class="btn_fav" id="" style="" type="button">
+    			<xf:label></xf:label>
+    		</xf:trigger>
+    		<w2:textbox class="pgt_tit" id="" label="상품 검색" style="" tagname=""></w2:textbox>
+    		<xf:group class="breadcrumb" id="" style="">
+    			<xf:group id="" style="" tagname="ul">
+    				<xf:group class="home" id="" style="" tagname="li">
+    					<w2:anchor id="" outerDiv="false" style="">
+    						<xf:label><![CDATA[Home]]></xf:label>
+    					</w2:anchor>
+    				</xf:group>
+    				<xf:group id="" style="" tagname="li">
+    					<w2:anchor id="" outerDiv="false" style="">
+    						<xf:label><![CDATA[1Depth Menu]]></xf:label>
+    					</w2:anchor>
+    				</xf:group>
+    				<xf:group id="" style="" tagname="li">
+    					<w2:anchor id="" outerDiv="false" style="">
+    						<xf:label><![CDATA[2Depth Menu]]></xf:label>
+    					</w2:anchor>
+    				</xf:group>
+    				<xf:group id="" style="" tagname="li">
+    					<w2:span id="" label="3Depth Menu" style=""></w2:span>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    	</xf:group>
+    	<xf:group class="schbox" id="" style="">
+    		<xf:group class="schbox_inner" id="" style="">
+    			<xf:group adaptive="layout" adaptiveThreshold="768" class="w2tb tbl " id="" style="" tagname="table">
+    				<w2:attributes>
+    					<w2:summary></w2:summary>
+    				</w2:attributes>
+    				<xf:group tagname="colgroup">
+    					<xf:group style="width:100px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    					<xf:group style="width:100px;" tagname="col"></xf:group>
+    					<xf:group style="" tagname="col"></xf:group>
+    				</xf:group>
+    				<xf:group class="" id="" style="" tagname="tr">
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="req" id="" label="상품명" style=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" style="" tagname="td">
+    						<xf:input id="txt_item_name" style="width: 144px;height: 21px;" ref="data:dm_item_search_cond.item_name"></xf:input>
+    					</xf:group>
+    					<xf:group class="w2tb_th" style="" tagname="th">
+    						<w2:textbox class="" id="" label="최고가격" style=""></w2:textbox>
+    					</xf:group>
+    					<xf:group class="w2tb_td" id="" style="" tagname="td">
+    						<xf:input id="txt_max_price" style="width: 144px;height: 21px;" ref="data:dm_item_search_cond.max_price"></xf:input>
+    					</xf:group>
+    				</xf:group>
+    			</xf:group>
+    		</xf:group>
+    		<xf:group class="btn_schbox" id="" style="">
+    			<xf:trigger class="btn_cm sch" disabled="" escape="false" id="trg_itemSearch" style="" type="button"
+    				ev:onclick="scwin.trg_itemSearch_onclick">
+    				<xf:label><![CDATA[조회]]></xf:label>
+    			</xf:trigger>
+    			<xf:trigger type="button" id="btn_downloadData" style="" class="btn_cm download"
+    				ev:onclick="scwin.btn_downloadData_onclick">
+    				<xf:label><![CDATA[엑셀다운로드]]></xf:label>
+    			</xf:trigger>
+    			<xf:trigger type="button" id="btn_uploadData" style="" class="btn_cm  upload" ev:onclick="scwin.btn_uploadData_onclick">
+    				<xf:label><![CDATA[엑셀업로드]]></xf:label>
+    			</xf:trigger>
+    			<xf:trigger type="button" id="btn_create_item" style="" class="btn_cm" ev:onclick="scwin.btn_create_item_onclick">
+    				<xf:label><![CDATA[상품등록]]></xf:label>
+    			</xf:trigger>
+    		</xf:group>
+    	</xf:group>
+
+    	<xf:group adaptiveThreshold="" class="gvwbox" id="" style=""></xf:group>
+    	<xf:group adaptiveThreshold="" class="gvwbox" id="" style=""></xf:group>
+    	<xf:group adaptiveThreshold="" class="gvwbox" id="" style="">
+    		<w2:gridView autoFit="allColumn" checkReadOnlyOnPasteEnable="" class="gvw" dataList="data:items" defaultCellHeight="26"
+    			focusMode="row" id="grd_items" keepDefaultColumnWidth="true" rowNumHeaderValue="No" rowNumVisible="true" rowNumWidth="50"
+    			rowStatusHeaderValue="상태" rowStatusVisible="false" rowStatusWidth="50" scrollByColumn="false" scrollByColumnAdaptive="false"
+    			style="height: 150px;width: 100%;" visibleRowNum="10">
+    			<w2:caption style="" id="caption2" value="this is a grid caption."></w2:caption>
+    			<w2:header style="" id="header2">
+    				<w2:row style="" id="row3">
+    					<w2:column width="70" inputType="text" style="" id="column10" value="ID" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column9" value="ITEM_NAME" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column12" value="PRICE" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="column11" value="QUANTITY" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:header>
+    			<w2:gBody style="" id="gBody2">
+    				<w2:row style="" id="row4">
+    					<w2:column width="70" inputType="text" style="" id="ID" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="ITEMNAME" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="PRICE" value="" displayMode="label"></w2:column>
+    					<w2:column width="70" inputType="text" style="" id="QUANTITY" value="" displayMode="label"></w2:column>
+    				</w2:row>
+    			</w2:gBody>
+    		</w2:gridView>
+    	</xf:group>
+    </body>
+</html>

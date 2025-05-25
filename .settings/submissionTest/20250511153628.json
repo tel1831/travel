@@ -1,0 +1,9 @@
+{
+   "charset": "UTF-8",
+   "reqMethod": "POST",
+   "serviceURL": "http://localhost:8084/main/init",
+   "contentType": "application/json",
+   "requestContent": "",
+   "responseContent": "{\"dlt_fav\":[],\"dlt_programAuthority\":[],\"dlt_menu\":[{\"MENU_CD\":\"001000000\",\"SRC_PATH\":null,\"MENU_LEVEL\":1,\"PROGRAM_CD\":\"\",\"PARENT_MENU_CD\":\"000000000\",\"MENU_NM\":\"업무화면\"},{\"MENU_CD\":\"001001000\",\"SRC_PATH\":null,\"MENU_LEVEL\":2,\"PROGRAM_CD\":\"\",\"PARENT_MENU_CD\":\"001000000\",\"MENU_NM\":\"시스템\"},{\"MENU_CD\":\"001002000\",\"SRC_PATH\":null,\"MENU_LEVEL\":2,\"PROGRAM_CD\":\"\",\"PARENT_MENU_CD\":\"001000000\",\"MENU_NM\":\"인사\"}],\"rsMsg\":{\"statusMsg\":\"메뉴정보가 조회 되었습니다.\",\"statusCode\":\"S\"},\"dma_defInfo\":{\"IS_ADMIN\":\"N\",\"EMP_NM\":null,\"EMP_CD\":null}}",
+   "sendTime": "2025-05-11 15:36:28"
+}
